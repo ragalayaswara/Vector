@@ -1,0 +1,61 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> v;
+        int m, n=0;
+        int count=0;
+
+        int sr=0,er=0,sc=0,ec=0;
+
+        n=matrix[0].size();
+        m=matrix.size();
+
+        sr=0;
+        er=m-1;
+        sc=0;
+        ec=n-1;
+
+    while((sr<=er) && (sc<=ec)){
+        for(int i=sc;i<=ec;i++)
+        {
+            v.push_back(matrix[sr][i]);
+            count++;
+        }
+        sr++;
+        if(count == m*n)
+            return v;
+        
+        for(int i=sr;i<=er;i++)
+        {
+            v.push_back(matrix[i][ec]);
+            count++;
+        }
+        if(count == m*n)
+            return v;
+
+        ec--;
+
+        for(int i=ec;i>=sc;i--)
+        {
+            v.push_back(matrix[er][i]);
+            count++;
+        }
+        if(count == m*n)
+            return v;
+
+        er--;
+
+        for(int i=er;i>=sr;i--)
+        {
+            v.push_back(matrix[i][sc]);
+            count++;
+        }
+
+        if(count == m*n)
+            return v;
+
+        sc++;
+    }
+     return v;
+    }  
+};
